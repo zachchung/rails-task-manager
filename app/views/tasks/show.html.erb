@@ -1,17 +1,21 @@
-<h1><%= @task.title %></h1>
+<%= link_to "Edit", edit_task_path, class: "float-right btn btn-info m-2" %> <%# Edit btn %>
 
+<h1><%= @task.title %></h1>
 <p class="card p-3"><%= @task.details %></p>
 
-<p><%= @task.completed ? "This task is completed"  :  "This task is not completed yet" %></p>
-<%# <p><%= @task.completed ? "[x]"  :  "[ ]" %><%# </p> %>
+<% if @task.completed %>
+  <i class="far fa-check-square"></i></i> This task is completed <%# complete icon %>
+<% else %>
+  <i class="far fa-square"></i> This task is not completed yet
+<% end %>
 
-<%# <button class="btn btn-danger" style="color: red">test</button> %>
-<%= link_to "Edit", edit_task_path, class: "btn btn-danger" %> <%# style: "color: white" %>
-<br>
-<%= link_to "Back to list", tasks_path %>
-<br>
-<%#= link_to "Delete", task_path(@task.id), method: :delete, data: { confirm: "Are you sure?" } %>
+<!-- TERNARY (CANNOT USE FONTAWESOME) -->
+<%#= @task.completed ? "[x]"  :  "[ ]" %>
 
+<%# Back icon %>
+<div class="border-top mt-3">
+  <%= link_to tasks_path do %>
+    <i class="fas fa-undo"></i> Back to list
+  <% end %>
+</div>
 
-<%= link_to "", task_path(@task.id), class: "fas fa-trash-alt", method: :delete, data: { confirm: "Are you sure?" } %>
-<!-- <i class="fas fa-trash-alt"></i> -->

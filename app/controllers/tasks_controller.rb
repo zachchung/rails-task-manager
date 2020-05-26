@@ -11,7 +11,7 @@ class TasksController < ApplicationController
     @task = Task.new # needed to send an empty instance for the form
   end
 
-  # don't need a create view:
+  # don't need a view:
   def create
     @task = Task.new(task_params)
     @task.save!
@@ -23,7 +23,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
   end
 
-  # don't need a create view:
+  # don't need a view:
   def update
     @task = Task.find(params[:id]) # why find again?
     @task.update(task_params)
@@ -32,7 +32,7 @@ class TasksController < ApplicationController
     redirect_to task_path(@task.id)
   end
 
-  # don't need a create view:
+  # don't need a view:
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
@@ -42,7 +42,7 @@ class TasksController < ApplicationController
 
   private
 
-  # Strong params (prevent user to hack the form & corrupt the db)
+  # Strong params (prevent user to send malicious data & corrupt the db)
   def task_params
     params.require(:task).permit(:title, :details, :completed)
   end

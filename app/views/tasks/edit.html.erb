@@ -1,16 +1,30 @@
 <h1>Edit task</h1>
 
-<%= form_for(@task) do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :details %>
-  <%= f.text_field :details %>
-  <%= f.label :completed %>
-  <%= f.check_box :completed %>
-  <%= f.submit %>
+<!-- SIMPLE FORM_FOR (LOOKS NICER) -->
+<%= simple_form_for(@task) do |f| %>
+<%= f.input :title %>
+<%= f.input :details %>
+<%= f.input :completed %>
+<%= f.submit :submit, class: "btn btn-info" %>
 <% end %>
 
-<%= link_to "Back to list", tasks_path %>
+<%# Back icon %>
+<div class="border-top mt-3">
+  <%= link_to tasks_path do %> <i class="fas fa-undo"></i> Back to list <% end %>
+</div>
+
+
+<!-- FORM_FOR (LOOKS UGLY) -->
+<%# form_for(@task) do |f| %>
+  <%# f.label :title %>
+  <%# f.text_field :title %>
+  <%# f.label :details %>
+  <%# f.text_field :details %>
+  <%# f.label :completed %>
+  <%# f.check_box :completed %>
+  <%# f.submit %>
+<%# end %>
+
 
 <%# This time the form rendered is prefilled %>
 
