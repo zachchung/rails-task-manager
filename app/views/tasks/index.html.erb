@@ -1,0 +1,10 @@
+<h1>My tasks</h1>
+
+<% @tasks.each do |task| %>
+  <ul class="list-inline">
+    <li class="list-inline-item"><%= task.completed ? "[X]"  :  "[ ]" %></li>
+    <li class="list-inline-item"><%= link_to task.title, task_path(task.id) %></li>
+  </ul>
+<% end %>
+
+<%= link_to "Add a new task", new_task_path %>
